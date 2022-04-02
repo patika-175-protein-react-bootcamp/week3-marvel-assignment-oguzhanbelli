@@ -29,15 +29,15 @@ function App() {
   const getCharachter = async () => {
     setLoading(true);
     try {
-      const { data, status, statusText } = await axios.get(
+      const { data } = await axios.get(
         `${process.env.REACT_APP_BASE_URL}?apikey=${process.env.REACT_APP_MARVEL_API}&hash=${process.env.REACT_APP_MARVEL_HASH_API}&limit=${pageLimit}&offset=${offset}`
       );
       setData(data);
-
       setLoading(false);
       if (!sessionStorage.getItem(`page ${currentPage}`)) {
         sessionStorage.setItem(`page ${currentPage}`, JSON.stringify(data));
       }
+     
     } catch (err) {
       const message = err.response
         ? `Request failed with ${err.response.status}: ${err.response.statusText}`
@@ -46,7 +46,6 @@ function App() {
 
       setLoading(false);
     }
-
     setLoading(false);
   };
 
@@ -58,25 +57,36 @@ function App() {
       behavior: "smooth",
     });
   };
+ 
   const handleClick = (number) => (event) => {
     if (sessionStorage.getItem(`page ${number}`)) {
+      setLoading(true);
       const dataSession = JSON.parse(sessionStorage.getItem(`page ${number}`));
       setcurrentPage(Number(event.target.id));
+
       setData(dataSession);
+
       scrollTo();
+      setInterval(() => {
+        setLoading(false);
+      }, 1000);
     } else {
+       
       setcurrentPage(Number(event.target.id));
       setOffset((number - 1) * 20);
       setPageLimit(20);
+      
       scrollTo();
     }
   };
 
   const handleNextbtn = () => {
+    
     if (sessionStorage.getItem(`page ${currentPage + 1}`)) {
       const dataSession = JSON.parse(
         sessionStorage.getItem(`page ${currentPage + 1}`)
       );
+
       setcurrentPage(Number(currentPage + 1));
       setData(dataSession);
       scrollTo();
@@ -110,24 +120,29 @@ function App() {
     }
   };
 
-  const renderPageNumbers = pages.map((number) => {
+  const renderPageNumbers = pages.map((number, idx) => {
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
       return (
         <li
           key={number}
           className={currentPage === number ? "is-active" : null}
         >
-          <button id={number} onClick={handleClick(number)}>
+          <button
+            id={number}
+            disabled={currentPage === currentPage[0] && loading ? true : false}
+            onClick={handleClick(number)}
+          >
             {number}
           </button>
         </li>
       );
     } else if (number === "...") {
       return (
-        <li className={currentPage === number ? "is-active" : null}>
-          <button id={number} onClick={handleNextbtn}>
-            {number}
-          </button>
+        <li
+          key={idx * 1000 - 2}
+          className={currentPage === number ? "is-active" : null}
+        >
+          <button id={number}>{number}</button>
         </li>
       );
     } else {
@@ -135,6 +150,7 @@ function App() {
     }
   });
   useEffect(() => {
+
     getCharachter();
   }, [offset]);
 
@@ -172,7 +188,7 @@ function App() {
             <nav className="pagination">
               <button
                 onClick={handlePrevbtn}
-                disabled={currentPage === pages[0] ? true : false}
+                disabled={currentPage === pages[0] && loading ? true : false}
                 className="pagination__arrow pagination__prev"
               >
                 <FaAngleLeft />
