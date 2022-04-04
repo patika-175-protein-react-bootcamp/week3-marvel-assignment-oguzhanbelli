@@ -1,0 +1,456 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #222222;
+
+  max-width: fit-content;
+  min-width: 100%;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("images/image\ 1.png");
+
+  width: 100%;
+  height: 1000px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: local;
+  position: relative;
+  top: -90px;
+  padding: 20px;
+}
+
+.marvellogo {
+  top: 34%;
+
+  background: url("images/image\ 2.png");
+
+  position: relative;
+
+  width: 500px;
+  height: 300px;
+  background-position: center;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: local;
+  position: relative;
+}
+
+* {
+  transition: 300ms;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 300px;
+  border: 2px solid white;
+  margin-right: 20px;
+  margin-top: 10%;
+  color: white;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(140, 136, 136, 0.2);
+}
+
+section {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  column-gap: 10px;
+}
+
+.image {
+  max-width: 200px;
+  max-height: 300px;
+  min-height: 300px;
+  min-height: 200px;
+  padding: 50px;
+  position: relative;
+  top: -70px;
+
+  border-top: 1px solid white;
+
+  padding: 7px 0 0px 0;
+
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  inline-size: 100%;
+  width: 100%;
+  font-weight: bold;
+  overflow-wrap: break-word;
+
+  bottom: 7%;
+
+  position: relative;
+}
+.adamWarLock {
+  padding: 50px;
+  background: url("images/image\ 4.png");
+  background-size: cover;
+  background-position: 100%, 100%;
+  background-repeat: no-repeat;
+}
+
+/* pagination */
+.paginationContainer {
+  margin-top: 10%;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: end;
+  margin-right: 20%;
+}
+p {
+  text-align: center;
+  margin: 3rem 0;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.pagination button {
+  display: inline-block;
+  padding: 0.5rem 0.7rem;
+  background-color: #222222;
+  text-decoration: none;
+  color: rgb(82, 77, 77);
+  border: 1px solid #222222;
+}
+.pagination button:hover,
+.pagination button:focus {
+  background-color: #101215;
+}
+
+.pagination__items {
+  display: flex;
+  list-style: none;
+
+  margin: 0 1px;
+}
+.pagination__items li {
+  top: -100vh;
+
+  margin: 0 1px;
+}
+
+.pagination__items .is-active button {
+  background-color: #424648;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  color: #f1f5f8;
+}
+
+/* Pagination Finish */
+/* Loader */
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #fff;
+  top: 30%;
+  animation: loader 2s infinite ease;
+}
+.loaderContainer {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 1s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
+
+/* Create two columns/boxes that floats next to each other */
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  .paginationContainer {
+    margin-top: 0 !important;
+    margin-bottom: 50% !important;
+
+    display: flex;
+    width: 100% !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 0 !important;
+    overflow: hidden;
+  }
+
+  .loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #fff;
+    top: 400px;
+    animation: loader 2s infinite ease;
+  }
+  .container {
+    display: flex;
+
+    width: 100% !important;
+
+    position: relative;
+    bottom: 200px !important;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 240px !important;
+    flex-direction: row;
+    border: 2px solid white;
+    margin-right: 0px !important;
+    margin-top: 30% !important;
+    color: white;
+  }
+  header {
+    background-size: contain;
+    height: 400px;
+    width: 100%;
+    bottom: -200px !important;
+    top: -160px !important;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-attachment: local;
+  }
+ 
+
+  .marvellogo {
+    top: 25% !important;
+    width: 120px !important;
+    height: 120px !important;
+    background-position: top !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  section {
+    padding: 0 !important;
+  }
+  header {
+    width: 100%;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: local;
+    position: relative;
+  }
+  .card-text {
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .marvellogo {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: local;
+    position: relative;
+  }
+  .image {
+    display: flex;
+    flex: content;
+    height: 280px;
+    width: 100%;
+    padding: 30px !important;
+    position: relative;
+    top: -70px;
+    border-top: 1px solid white;
+    padding: 7px 0 0px 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 230px;
+    margin-top: 15%;
+    flex-direction: row;
+    border: 2px solid white;
+    color: white;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    background: url("images/image\ 1.png");
+
+    width: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+    position: relative;
+    top: -90px;
+  }
+
+  .marvellogo {
+    top: 40%;
+    left: 20px;
+
+    background: url("images/image\ 2.png");
+
+    position: relative;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: local;
+    position: relative;
+  }
+  .card {
+    width: 300px;
+    margin-top: 15% !important;
+    margin-right: 20px;
+  }
+  .image {
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 300px;
+    min-height: 300px;
+    position: relative;
+    top: -70px;
+    border-top: 2px solid white;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 1500px !important;
+  }
+}
